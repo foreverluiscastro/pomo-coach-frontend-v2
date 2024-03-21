@@ -31,3 +31,170 @@ body {
     text-wrap: balance;
   }
 }
+
+.Layout {
+  @apply  text-center flex flex-col min-h-screen transition duration-300
+}
+
+.NavBar {
+  @apply w-full shadow-lg
+}
+
+.NavContainer {
+  @apply max-w-screen-sm mx-auto px-4 flex justify-between items-center h-16
+}
+
+.Study {
+  @apply bg-green-900 transition duration-300
+}
+
+.Break {
+  @apply bg-blue-900 transition duration-300
+}
+
+.StudySecondary {
+  @apply bg-green-500 transition duration-300 bg-opacity-25
+}
+
+.BreakSecondary {
+  @apply bg-blue-500 transition duration-300 bg-opacity-25
+}
+
+.Button {
+  @apply px-3 py-0.5 rounded-md text-lg transition duration-300 cursor-pointer font-semibold whitespace-nowrap
+}
+
+.Close {
+  @apply bg-red-300 hover:bg-red-400
+}
+
+.Utility {
+  @apply bg-green-300 hover:bg-green-400
+}
+
+.Main {
+  @apply flex-grow container max-w-screen-sm mx-auto px-4 items-center justify-center text-center
+}
+
+.Footer {
+  @apply container max-w-screen-sm mx-auto px-4 items-center justify-center text-center mb-4 flex
+}
+
+.Page {
+  @apply flex flex-col mb-4
+}
+
+.TopMargin {
+  @apply mt-8
+}
+
+.SideMargin {
+  @apply sm:mx-10
+}
+
+.Container {
+  @apply rounded-md py-4 mb-4
+}
+
+.ButtonContainer {
+  @apply container py-2
+}
+
+.Time {
+  @apply text-8xl sm:text-8xl md:text-9xl lg:text-9xl font-bold sm:mt-8 md:mt-4
+}
+
+.StartButton {
+  @apply bg-gray-100 rounded my-4 px-3 min-w-40 min-h-14 text-3xl font-semibold
+}
+
+.StudyStart {
+  @apply text-green-800
+}
+
+.BreakStart {
+  @apply text-blue-800
+}
+
+.ModalBackground {
+  @apply fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50
+}
+
+.Modal {
+  @apply bg-gray-100 rounded-md max-w-md w-11/12 text-black border
+}
+
+.ModalTop {
+  @apply flex items-center justify-between mb-4 w-full shadow-md p-4
+}
+
+.ModalHeader{
+  @apply text-lg font-bold mx-auto
+}
+
+.Label {
+  @apply block text-gray-700 font-bold p-2 w-1/3
+}
+
+.Form {
+  @apply w-full p-4 text-center
+}
+
+.FormField {
+  @apply mb-4 flex items-center justify-center
+}
+
+.Input {
+  @apply shadow border rounded py-2 px-3 text-gray-700 leading-tight w-1/2
+}
+
+.GoalContainer {
+  @apply w-1/2 flex justify-center
+}
+
+.Select {
+  @apply py-2 rounded shadow border px-2 bg-blue-100
+}
+
+@layer utilities {
+  .shadow-outline {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Change color and size as needed */
+  }
+}
+
+.Select:focus {
+  @apply outline-none border-blue-500 shadow-outline;
+}
+
+.Select:hover {
+  @apply border-gray-400 bg-blue-200
+}
+
+.Label {
+  @apply block text-gray-700 font-bold p-2 w-1/3
+}
+
+.EditButton {
+  @apply flex rounded p-2 ml-3 items-center shadow-lg
+}
+
+.NavButtons {
+  @apply rounded p-2 ml-3 cursor-pointer flex items-center justify-center text-sm font-semibold whitespace-nowrap
+}
+
+.StudyButtonSecondary {
+  @apply bg-green-500 transition duration-500 hover:bg-green-600 bg-opacity-30
+}
+
+.BreakButtonSecondary {
+  @apply bg-blue-500 transition duration-500 hover:bg-blue-600 bg-opacity-30
+}
+
+.Selected {
+  @apply bg-gray-500 text-white
+}
+
+.NotSelected {
+  @apply hover:bg-gray-300
+}
+
