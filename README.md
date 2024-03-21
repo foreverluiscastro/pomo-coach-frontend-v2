@@ -1,40 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PomoCoach: Optimizing Study Routines
+Study habits can be challenging to establish and maintain. **PomoCoach** is not just a timer; it's a powerful accountability tool designed to help you implement a routine rooted in the proven Pomodoro Technique. This app aims to provide users with a structured study and decompression routine, optimizing their learning results.
 
-## Getting Started
+## Overview
+PomoCoach addresses the challenges of creating effective study habits by leveraging the Pomodoro Technique. Users can establish a study routine that balances focused work sessions with effective breaks, enhancing productivity and learning outcomes.
 
-First, run the development server:
-
+## Installation
+To run this app you must have **Node.js** installed. You can check your version of Node.js with:
+```bash
+node -v
+```
+next, install dev dependencies:
+```bash
+npm install
+```
+and finally you can run the app in development by running:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Core Features
+This app allows anyone to swap beteen study and break sessions and utilize the time interval for both to build a smart and healthy routine.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## User Features
+Users can now sign up for a profile and unlock the newest functionality that PomoCoach has to offer.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Stat Tracking
+Now you can effortlessly monitor your weekly habits with precision. Experience the convenience of a donut graph, showcasing your daily progress, alongside a comprehensive weekly bar graph to encapsulate your overall weekly achievements.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### AI Analyzer
+Harnessing the powerful capabilities of OpenAI's GPT 3.5-turbo model, PomoCoach introduces an enhanced feature set. Users can now delve into insightful analyses of their weekly study habits and receive tailored advice aimed at optimizing efficiency and enhancing productivity.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+**Upgrade your productivity tracking with PomoCoach's new visualization tools today.**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Implementation
+PomoCoach was built using **Next.js** for the frontend and **Tailwind CSS** for a responsive sleek design. The AI analyzer feature utilizes OpenAI Technology for powerful insights.
