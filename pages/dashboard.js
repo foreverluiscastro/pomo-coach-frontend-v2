@@ -13,7 +13,7 @@ function Dashboard() {
   console.log(user);
 
   const [sessions, setSessions] = useState([]);
-  console.log(sessions);
+  console.log("this is the users sessios data:", sessions);
   const [totalMinutesStudied, setTotalMinutesStudied] = useState(0);
   const [percentage, setPercentage] = useState(0); // State for percentage
 
@@ -27,6 +27,7 @@ function Dashboard() {
       )
         .then((r) => r.json())
         .then((sessions) => {
+          console.log("This is the resp from the server:", sessions)
           setSessions(sessions);
 
           const todaySessions = sessions.filter((session) => {
@@ -68,21 +69,24 @@ function Dashboard() {
     "Sun",
   ].map((dayAbbreviation) => {
     const sessionsForDay = sessions.filter((session) => {
-      const sessionDate = new Date(session.date);
+      const sessionDate = new Date(session.session_date);
+
+      // console.log(dayAbbreviation)
       const sessionDayAbbreviation = sessionDate.toString().split(" ")[0];
+      // console.log(sessionDayAbbreviation === dayAbbreviation)
       return sessionDayAbbreviation === dayAbbreviation;
     });
-    // console.log("This is sessionsForDay: ", sessionsForDay);
+    console.log("This is sessionsForDay: ", sessionsForDay);
 
     const minutesForDay = Math.ceil(
-      sessionsForDay.reduce((total, session) => total + session.total_time, 0) /
+      sessionsForDay.reduce((total, session) => total + session.total_secs, 0) /
         60
     );
 
     return minutesForDay;
   });
 
-  // console.log("This is minutesForTheWeek: ", minutesForTheWeek);
+  console.log("This is minutesForTheWeek: ", minutesForTheWeek);
   // console.log("This is the value of percentage: ", percentage);
 
   return (

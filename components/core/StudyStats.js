@@ -77,7 +77,7 @@ function StudyStats({
         </div>
         <div className="flex items-center">
           <h1 className=" font-semibold text-md items-center">
-            Weekly goal: {goal} minutes
+            Daily goal: {goal} minutes
           </h1>
           <button
             className={`EditButton ${

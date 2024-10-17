@@ -39,17 +39,17 @@ export default function Timer() {
       setIsRunning(false);
       setSessionStarted(false);
 
-      if (Notification.permission === "granted") {
-        displayNotification();
-        // console.log("Browser times up");
-      }
+      // if (Notification.permission === "granted") {
+      //   displayNotification();
+      //   // console.log("Browser times up");
+      // }
 
       if (session === "Study") {
         // refill the time for 25 mins
-        setTime(1500);
+        setTime(studyTime * 60);
       } else {
         // refill the time for 5 mins
-        setTime(300);
+        setTime(breakTime * 60);
       }
     }
 
@@ -75,16 +75,16 @@ export default function Timer() {
   }, [session, studyTime, breakTime, settingsSaved]);
 
   // if notifications are on let em know the timers done
-  function displayNotification() {
-    if ("Notification" in window) {
-      // Your code for notifications
-      Notification.requestPermission().then((permission) => {
-        if (permission === "granted") {
-          alert("Time's up!");
-        }
-      });
-    }
-  }
+  // function displayNotification() {
+  //   if ("Notification" in window) {
+  //     // Your code for notifications
+  //     Notification.requestPermission().then((permission) => {
+  //       if (permission === "granted") {
+  //         alert("Time's up!");
+  //       }
+  //     });
+  //   }
+  // }
 
   function generateSessionReport() {
     const sessionType = session;
