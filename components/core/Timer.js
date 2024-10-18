@@ -16,11 +16,25 @@ export default function Timer() {
     soundVolume,
   } = useAppContext();
 
+  // console.log("This is the studyTime:", studyTime)
+  
   const [time, setTime] = useState(isStudy ? studyTime * 60 : breakTime * 60); // 25 minutes in total seconds
   const [totalSessionTime, setTotalSessionTime] = useState(
     isStudy ? studyTime * 60 : breakTime * 60
   ); // Total time for the current session
   const [sessionStarted, setSessionStarted] = useState(false); // tracks whether a session is started yet
+  // console.log("This is time:", time)
+  // console.log("This is totalSessionTime:", totalSessionTime)
+
+  useEffect(() => {
+    if (session === "Study") {
+      setTime(studyTime * 60);
+      setTotalSessionTime(studyTime * 60);
+    } else {
+      setTime(breakTime * 60);
+      setTotalSessionTime(breakTime * 60);
+    }
+  }, [session, studyTime, breakTime]);
 
   // This useEffect runs the timer if it is running
   useEffect(() => {
@@ -97,7 +111,7 @@ export default function Timer() {
       session_date: currentDate,
     };
 
-    console.log("This is the data before the POST: ", data);
+    // console.log("This is the data before the POST: ", data);
     // code for a POST request
     fetch("/pomo_sessions", {
       method: "POST",
