@@ -1,6 +1,7 @@
 import React from "react";
 
 function DonutChart({ percentage, strokeWidth, size }) {
+  // console.log("This is the percentage passed down from Dashboard:", percentage)
   // Calculate the radius and circumference
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;

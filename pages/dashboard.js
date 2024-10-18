@@ -31,13 +31,13 @@ function Dashboard() {
           setSessions(sessions);
 
           const todaySessions = sessions.filter((session) => {
-            const sessionDate = new Date(session.date);
+            const sessionDate = new Date(session.session_date);
             return sessionDate.toDateString() === new Date().toDateString();
           });
 
           const todayMinutes =
             todaySessions.reduce(
-              (acc, session) => acc + session.total_time,
+              (acc, session) => acc + session.total_secs,
               0
             ) / 60;
           setTotalMinutesStudied(todayMinutes);
