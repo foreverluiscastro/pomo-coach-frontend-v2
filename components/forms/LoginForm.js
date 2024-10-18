@@ -61,8 +61,8 @@ export default function LoginForm({ setUser, setShowLogin }) {
         </button>
       </div>
       <div className="FormField">
-        {errors.map((err) => (
-          <Error err={err} />
+        {errors.map((err, idx) => (
+          <Error key={idx} err={err} />
         ))}
       </div>
     </form>

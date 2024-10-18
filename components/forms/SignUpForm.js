@@ -176,8 +176,8 @@ export default function SignUpForm({ setUser, setShowLogin }) {
         </button>
       </div>
       <div className="FormField flex-col">
-        {errors.map((err) => (
-          <Error err={err} />
+        {errors.map((err, idx) => (
+          <Error key={idx} err={err} />
         ))}
       </div>
       <p className="text-md text-gray-600 mt-4">
