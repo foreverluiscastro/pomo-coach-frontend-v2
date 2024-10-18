@@ -88,6 +88,29 @@ export default function Timer() {
     }
   }, [session, studyTime, breakTime, settingsSaved]);
 
+  // Ping server to keep render running during session.
+  useEffect(() => {
+    let pingInterval;
+
+    if (isRunning) {
+      pingInterval = setInterval(() => {
+        fetch("/me")
+          .then((response) => {
+            if (response.ok) {
+              console.log("Successfully pinged server.");
+            } else {
+              console.log("Failed to ping server.")
+            }
+          })
+          .catch((error) => {
+            console.error("Error pinging server:", error);
+          });
+      }, 10 * 60 * 1000); // 10 minutes in milliseconds
+    }
+
+    return () => clearInterval(pingInterval);
+  }, [isRunning]);
+
   // if notifications are on let em know the timers done
   // function displayNotification() {
   //   if ("Notification" in window) {
