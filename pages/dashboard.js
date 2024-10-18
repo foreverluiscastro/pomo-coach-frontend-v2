@@ -10,7 +10,7 @@ function Dashboard() {
   // console.log("THe dashboard is being rendered.")
   const { isStudy, user, setUser } = useAppContext();
   const router = useRouter();
-  console.log(user);
+  // console.log(user);
 
   const [sessions, setSessions] = useState([]);
   console.log("this is the users sessios data:", sessions);
@@ -27,7 +27,7 @@ function Dashboard() {
       )
         .then((r) => r.json())
         .then((sessions) => {
-          console.log("This is the resp from the server:", sessions)
+          // console.log("This is the resp from the server:", sessions)
           setSessions(sessions);
 
           const todaySessions = sessions.filter((session) => {
@@ -60,23 +60,26 @@ function Dashboard() {
   if (user === null) return <h1>Loading...</h1>;
 
   const minutesForTheWeek = [
+    "Sun",
     "Mon",
     "Tue",
     "Wed",
     "Thu",
     "Fri",
     "Sat",
-    "Sun",
   ].map((dayAbbreviation) => {
     const sessionsForDay = sessions.filter((session) => {
+      // debugger
       const sessionDate = new Date(session.session_date);
 
       // console.log(dayAbbreviation)
       const sessionDayAbbreviation = sessionDate.toString().split(" ")[0];
+      // debugger
+      console.log(sessionDayAbbreviation)
       // console.log(sessionDayAbbreviation === dayAbbreviation)
       return sessionDayAbbreviation === dayAbbreviation;
     });
-    console.log("This is sessionsForDay: ", sessionsForDay);
+    // console.log("This is sessionsForDay: ", sessionsForDay);
 
     const minutesForDay = Math.ceil(
       sessionsForDay.reduce((total, session) => total + session.total_secs, 0) /

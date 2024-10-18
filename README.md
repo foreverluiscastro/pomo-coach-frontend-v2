@@ -43,7 +43,7 @@ Now you can effortlessly monitor your weekly habits with precision. Experience t
 ![Alt text](./public/Ai.PNG)
 
 
-Harnessing the powerful capabilities of OpenAI's GPT 3.5-turbo model, PomoCoach introduces an enhanced feature set. Users can now delve into insightful analyses of their weekly study habits and receive tailored advice aimed at optimizing efficiency and enhancing productivity.
+Harnessing the powerful capabilities of OpenAI's GPT 4 model, PomoCoach introduces an enhanced feature set. Users can now delve into insightful analyses of their weekly study habits and receive tailored advice aimed at optimizing efficiency and enhancing productivity.
 
 
 **Upgrade your productivity tracking with PomoCoach's new visualization tools today.**

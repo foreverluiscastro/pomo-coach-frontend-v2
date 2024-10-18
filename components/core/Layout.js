@@ -26,14 +26,7 @@ export const Layout = ({ children }) => {
         {children}
       </div>
       <footer className="Footer">
-        Made by Luis Castro. Powered by OpenAI{" "}
-        <Image
-          src="/openai.png"
-          width={30}
-          height={25}
-          className="p-1"
-          alt="Logo"
-        />
+        Made by Luis Castro. Powered by OpenAI
       </footer>
     </div>
   );

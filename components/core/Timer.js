@@ -93,8 +93,8 @@ export default function Timer() {
 
     const data = {
       session_type: sessionType,
-      total_time: totalTime,
-      date: currentDate,
+      total_secs: totalTime,
+      session_date: currentDate,
     };
 
     console.log("This is the data before the POST: ", data);
