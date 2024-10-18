@@ -106,8 +106,8 @@ export default function Timer() {
       },
       body: JSON.stringify(data),
     })
-      .then((r) => r.json())
-      .then((r) => console.log("This is the response from the server: ", r));
+      // .then((r) => r.json())
+      // .then((r) => console.log("This is the response from the server: ", r));
   }
 
   function formatTime() {
@@ -136,9 +136,9 @@ export default function Timer() {
 
   function handleClick(e) {
     // if a session has started, generate a new report before switching
-    console.log("This is the value of session started: ", sessionStarted);
+    // console.log("This is the value of session started: ", sessionStarted);
     if (sessionStarted && user) {
-      console.log("Inside handle click");
+      // console.log("Inside handle click");
       generateSessionReport();
     }
 

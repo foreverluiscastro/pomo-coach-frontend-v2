@@ -13,7 +13,7 @@ function Dashboard() {
   // console.log(user);
 
   const [sessions, setSessions] = useState([]);
-  console.log("this is the users sessios data:", sessions);
+  // console.log("this is the users sessios data:", sessions);
   const [totalMinutesStudied, setTotalMinutesStudied] = useState(0);
   const [percentage, setPercentage] = useState(0); // State for percentage
 
@@ -75,7 +75,7 @@ function Dashboard() {
       // console.log(dayAbbreviation)
       const sessionDayAbbreviation = sessionDate.toString().split(" ")[0];
       // debugger
-      console.log(sessionDayAbbreviation)
+      // console.log(sessionDayAbbreviation)
       // console.log(sessionDayAbbreviation === dayAbbreviation)
       return sessionDayAbbreviation === dayAbbreviation;
     });
@@ -89,7 +89,7 @@ function Dashboard() {
     return minutesForDay;
   });
 
-  console.log("This is minutesForTheWeek: ", minutesForTheWeek);
+  // console.log("This is minutesForTheWeek: ", minutesForTheWeek);
   // console.log("This is the value of percentage: ", percentage);
 
   return (

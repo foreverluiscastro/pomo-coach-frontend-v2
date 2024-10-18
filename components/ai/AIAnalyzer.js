@@ -8,7 +8,7 @@ export default function AIAnalyzer({ isStudy }) {
 
   // Function to send input data to ChatGPT and receive response
   function analyzeHabitsAndProvideAdvice() {
-    console.log("Analyze habits was called");
+    // console.log("Analyze habits was called");
     setIsLoading(true);
 
     const today = new Date().toISOString();

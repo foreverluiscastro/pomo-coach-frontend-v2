@@ -59,8 +59,8 @@ export default function SignUpForm({ setUser, setShowLogin }) {
   }
 
   function handleChange(e) {
-    console.log("This is the chosen option: ", e.target.value);
-    console.log("This is the current goalUnit: ", goalUnit);
+    // console.log("This is the chosen option: ", e.target.value);
+    // console.log("This is the current goalUnit: ", goalUnit);
     if (e.target.value === "hours" && goalUnit === "minutes") {
       setGoal((currentGoal) => Math.ceil(currentGoal / 60));
       setGoalUnit(e.target.value);
