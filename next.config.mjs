@@ -29,27 +29,27 @@ const nextConfig = {
       // },
       {
         source: '/signup',
-        destination: 'https://pomocoach-api-v2.onrender.com/api/signup',
+        destination: 'https://18.226.169.30/api/signup',
       },
       {
         source: '/login',
-        destination: 'https://pomocoach-api-v2.onrender.com/api/login',
+        destination: 'https://18.226.169.30/api/login',
       },
       {
         source: '/me',
-        destination: 'https://pomocoach-api-v2.onrender.com/api/me'
+        destination: 'https://18.226.169.30/api/me'
       },
       {
         source: '/logout',
-        destination: 'https://pomocoach-api-v2.onrender.com/api/logout'
+        destination: 'https://18.226.169.30/api/logout'
       },
       {
         source: '/pomo_sessions',
-        destination: 'https://pomocoach-api-v2.onrender.com/api/pomo_sessions'
+        destination: 'https://18.226.169.30/api/pomo_sessions'
       },
       {
         source: '/ai-analyzer',
-        destination: 'https://pomocoach-api-v2.onrender.com/api/ai-analyzer',
+        destination: 'https://18.226.169.30/api/ai-analyzer',
       }
     ];
   },
