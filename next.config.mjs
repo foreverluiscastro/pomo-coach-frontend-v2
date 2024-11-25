@@ -29,27 +29,27 @@ const nextConfig = {
       // },
       {
         source: '/signup',
-        destination: 'https://18.226.169.30/api/signup',
+        destination: 'http://18.226.169.30/api/signup',
       },
       {
         source: '/login',
-        destination: 'https://18.226.169.30/api/login',
+        destination: 'http://18.226.169.30/api/login',
       },
       {
         source: '/me',
-        destination: 'https://18.226.169.30/api/me'
+        destination: 'http://18.226.169.30/api/me'
       },
       {
         source: '/logout',
-        destination: 'https://18.226.169.30/api/logout'
+        destination: 'http://18.226.169.30/api/logout'
       },
       {
         source: '/pomo_sessions',
-        destination: 'https://18.226.169.30/api/pomo_sessions'
+        destination: 'http://18.226.169.30/api/pomo_sessions'
       },
       {
         source: '/ai-analyzer',
-        destination: 'https://18.226.169.30/api/ai-analyzer',
+        destination: 'http://18.226.169.30/api/ai-analyzer',
       }
     ];
   },
