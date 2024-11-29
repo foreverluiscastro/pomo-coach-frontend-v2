@@ -29,27 +29,27 @@ const nextConfig = {
       // },
       {
         source: '/signup',
-        destination: 'https://pomocoach-api-v2-purple-firefly-4058.fly.dev/api/signup',
+        destination: 'https://pomocoach-api-v2.fly.dev/api/signup',
       },
       {
         source: '/login',
-        destination: 'https://pomocoach-api-v2-purple-firefly-4058.fly.dev/api/login',
+        destination: 'https://pomocoach-api-v2.fly.dev/api/login',
       },
       {
         source: '/me',
-        destination: 'https://pomocoach-api-v2-purple-firefly-4058.fly.dev/api/me'
+        destination: 'https://pomocoach-api-v2.fly.dev/api/me'
       },
       {
         source: '/logout',
-        destination: 'https://pomocoach-api-v2-purple-firefly-4058.fly.dev/api/logout'
+        destination: 'https://pomocoach-api-v2.fly.dev/api/logout'
       },
       {
         source: '/pomo_sessions',
-        destination: 'https://pomocoach-api-v2-purple-firefly-4058.fly.dev/api/pomo_sessions'
+        destination: 'https://pomocoach-api-v2.fly.dev/api/pomo_sessions'
       },
       {
         source: '/ai-analyzer',
-        destination: 'https://pomocoach-api-v2-purple-firefly-4058.fly.dev/api/ai-analyzer',
+        destination: 'https://pomocoach-api-v2.fly.dev/api/ai-analyzer',
       }
     ];
   },
