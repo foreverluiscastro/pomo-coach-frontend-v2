@@ -59,8 +59,8 @@ export default function SignUpForm({ setUser, setShowLogin }) {
   }
 
   function handleChange(e) {
-    console.log("This is the chosen option: ", e.target.value);
-    console.log("This is the current goalUnit: ", goalUnit);
+    // console.log("This is the chosen option: ", e.target.value);
+    // console.log("This is the current goalUnit: ", goalUnit);
     if (e.target.value === "hours" && goalUnit === "minutes") {
       setGoal((currentGoal) => Math.ceil(currentGoal / 60));
       setGoalUnit(e.target.value);
@@ -176,8 +176,8 @@ export default function SignUpForm({ setUser, setShowLogin }) {
         </button>
       </div>
       <div className="FormField flex-col">
-        {errors.map((err) => (
-          <Error err={err} />
+        {errors.map((err, idx) => (
+          <Error key={idx} err={err} />
         ))}
       </div>
       <p className="text-md text-gray-600 mt-4">

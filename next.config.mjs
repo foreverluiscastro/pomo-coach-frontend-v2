@@ -2,31 +2,32 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
+    const apiBaseUrl = process.env.API_BASE_URL || 'http://localhost:3001'; // Default to localhost in dev
     return [
       {
         source: '/signup',
-        destination: 'http://localhost:3001/api/signup',
+        destination: `${apiBaseUrl}/api/signup`,
       },
       {
         source: '/login',
-        destination: 'http://localhost:3001/api/login',
+        destination: `${apiBaseUrl}/api/login`,
       },
       {
         source: '/me',
-        destination: 'http://localhost:3001/api/me'
+        destination: `${apiBaseUrl}/api/me`,
       },
       {
         source: '/logout',
-        destination: 'http://localhost:3001/api/logout'
+        destination: `${apiBaseUrl}/api/logout`,
       },
       {
         source: '/pomo_sessions',
-        destination: 'http://localhost:3001/api/pomo_sessions'
+        destination: `${apiBaseUrl}/api/pomo_sessions`,
       },
       {
         source: '/ai-analyzer',
-        destination: 'http://localhost:3001/api/ai-analyzer',
-      }
+        destination: `${apiBaseUrl}/api/ai-analyzer`,
+      },
     ];
   },
 };

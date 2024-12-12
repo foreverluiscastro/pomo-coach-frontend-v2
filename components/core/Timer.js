@@ -16,11 +16,25 @@ export default function Timer() {
     soundVolume,
   } = useAppContext();
 
+  // console.log("This is the studyTime:", studyTime)
+  
   const [time, setTime] = useState(isStudy ? studyTime * 60 : breakTime * 60); // 25 minutes in total seconds
   const [totalSessionTime, setTotalSessionTime] = useState(
     isStudy ? studyTime * 60 : breakTime * 60
   ); // Total time for the current session
   const [sessionStarted, setSessionStarted] = useState(false); // tracks whether a session is started yet
+  // console.log("This is time:", time)
+  // console.log("This is totalSessionTime:", totalSessionTime)
+
+  useEffect(() => {
+    if (session === "Study") {
+      setTime(studyTime * 60);
+      setTotalSessionTime(studyTime * 60);
+    } else {
+      setTime(breakTime * 60);
+      setTotalSessionTime(breakTime * 60);
+    }
+  }, [session, studyTime, breakTime]);
 
   // This useEffect runs the timer if it is running
   useEffect(() => {
@@ -74,6 +88,29 @@ export default function Timer() {
     }
   }, [session, studyTime, breakTime, settingsSaved]);
 
+  // Ping server to keep render running during session.
+  useEffect(() => {
+    let pingInterval;
+
+    if (isRunning) {
+      pingInterval = setInterval(() => {
+        fetch("/me")
+          .then((response) => {
+            if (response.ok) {
+              console.log("Successfully pinged server.");
+            } else {
+              console.log("Failed to ping server.")
+            }
+          })
+          .catch((error) => {
+            console.error("Error pinging server:", error);
+          });
+      }, 10 * 60 * 1000); // 10 minutes in milliseconds
+    }
+
+    return () => clearInterval(pingInterval);
+  }, [isRunning]);
+
   // if notifications are on let em know the timers done
   // function displayNotification() {
   //   if ("Notification" in window) {
@@ -93,11 +130,11 @@ export default function Timer() {
 
     const data = {
       session_type: sessionType,
-      total_time: totalTime,
-      date: currentDate,
+      total_secs: totalTime,
+      session_date: currentDate,
     };
 
-    console.log("This is the data before the POST: ", data);
+    // console.log("This is the data before the POST: ", data);
     // code for a POST request
     fetch("/pomo_sessions", {
       method: "POST",
@@ -106,8 +143,8 @@ export default function Timer() {
       },
       body: JSON.stringify(data),
     })
-      .then((r) => r.json())
-      .then((r) => console.log("This is the response from the server: ", r));
+      // .then((r) => r.json())
+      // .then((r) => console.log("This is the response from the server: ", r));
   }
 
   function formatTime() {
@@ -136,9 +173,9 @@ export default function Timer() {
 
   function handleClick(e) {
     // if a session has started, generate a new report before switching
-    console.log("This is the value of session started: ", sessionStarted);
+    // console.log("This is the value of session started: ", sessionStarted);
     if (sessionStarted && user) {
-      console.log("Inside handle click");
+      // console.log("Inside handle click");
       generateSessionReport();
     }
 
