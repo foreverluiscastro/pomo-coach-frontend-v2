@@ -11,6 +11,7 @@ export default function SignUpForm({ setUser, setShowLogin }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,42 +26,37 @@ export default function SignUpForm({ setUser, setShowLogin }) {
       goalInMins = goal;
     }
 
-    console.log("This is the request body: ", {
-      username,
-      daily_goal: parseInt(goalInMins),
-      study_goal: studyGoal,
-      details: details,
-      password,
-      password_confirmation: passwordConfirmation,
-    });
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("daily_goal", parseInt(goalInMins));
+    formData.append("password", password);
+    formData.append("password_confirmation", passwordConfirmation);
+    if (profilePicture) {
+      formData.append("profile_picture", profilePicture); // Add the profile picture to the form data
+    }
 
     fetch("/signup", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        daily_goal: parseInt(goalInMins),
-        password,
-        password_confirmation: passwordConfirmation,
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => {
-          setUser(user);
-          setShowLogin(false);
-        });
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+      body: formData, // Send as FormData, not JSON
+    })
+      .then((r) => {
+        setIsLoading(false);
+        if (r.ok) {
+          r.json().then((user) => {
+            setUser(user);
+            setShowLogin(false);
+          });
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setErrors([err.message || "An unexpected error occurred."]);
+      });
   }
 
   function handleChange(e) {
-    // console.log("This is the chosen option: ", e.target.value);
-    // console.log("This is the current goalUnit: ", goalUnit);
     if (e.target.value === "hours" && goalUnit === "minutes") {
       setGoal((currentGoal) => Math.ceil(currentGoal / 60));
       setGoalUnit(e.target.value);
@@ -74,9 +70,7 @@ export default function SignUpForm({ setUser, setShowLogin }) {
   return (
     <form onSubmit={handleSubmit} className="Form">
       <div className="FormField">
-        <label className="Label" htmlFor="username">
-          Username:
-        </label>
+        <label className="Label" htmlFor="username">Username:</label>
         <div className="flex items-center">
           <input
             id="username"
@@ -88,9 +82,7 @@ export default function SignUpForm({ setUser, setShowLogin }) {
         </div>
       </div>
       <div className="FormField">
-        <label className="Label" htmlFor="goal">
-          Daily Goal:
-        </label>
+        <label className="Label" htmlFor="goal">Daily Goal:</label>
         <div className="GoalContainer">
           <input
             id="goal"
@@ -105,12 +97,8 @@ export default function SignUpForm({ setUser, setShowLogin }) {
           </select>
         </div>
       </div>
-
-      {/* AI info area */}
       <div className="FormField">
-        <label className="Label" htmlFor="study-goal">
-          What are you studying? <span className="text-red-500">*</span>
-        </label>
+        <label className="Label" htmlFor="study-goal">What are you studying?</label>
         <div className="flex items-center">
           <input
             id="study-goal"
@@ -122,30 +110,18 @@ export default function SignUpForm({ setUser, setShowLogin }) {
         </div>
       </div>
       <div className="FormField">
-        <label className="Label" htmlFor="details">
-          Why are you studying this and describe your ideal study situation:{" "}
-          <span className="text-red-500">*</span>
-        </label>
-        <div className="flex flex-col items-center">
-          <textarea
-            id="details"
-            autoComplete="details"
-            maxLength={400}
-            className=" flex-grow"
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-          />
-          <p className="text-xs text-gray-600 mt-1">
-            {details.length} / 200 characters
-          </p>
-        </div>
+        <label className="Label" htmlFor="details">Why are you studying this?</label>
+        <textarea
+          id="details"
+          autoComplete="details"
+          maxLength={400}
+          className="flex-grow"
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+        />
       </div>
-      {/*  */}
-
       <div className="FormField">
-        <label className="Label" htmlFor="password">
-          Password:
-        </label>
+        <label className="Label" htmlFor="password">Password:</label>
         <div className="flex items-center">
           <input
             id="password"
@@ -157,33 +133,37 @@ export default function SignUpForm({ setUser, setShowLogin }) {
         </div>
       </div>
       <div className="FormField">
-        <label className="Label" htmlFor="password-confirm">
-          Confirm Password:
-        </label>
-        <div className="flex items-center">
-          <input
-            id="password-confirm"
-            autoComplete="off"
-            className="Input flex-grow"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
-        </div>
+        <label className="Label" htmlFor="password-confirm">Confirm Password:</label>
+        <input
+          id="password-confirm"
+          autoComplete="off"
+          className="Input flex-grow"
+          value={passwordConfirmation}
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+        />
+      </div>
+      <div className="FormField">
+        <label className="Label" htmlFor="profile-picture">Profile Picture:</label>
+        <input
+          id="profile-picture"
+          type="file"
+          accept="image/*"
+          className="Input flex-grow"
+          onChange={(e) => setProfilePicture(e.target.files[0])}
+        />
       </div>
       <div className="FormField">
         <button type="submit" className="Button Utility">
           {isLoading ? "Loading..." : "Sign Up"}
         </button>
       </div>
-      <div className="FormField flex-col">
-        {errors.map((err, idx) => (
-          <Error key={idx} err={err} />
-        ))}
-      </div>
-      <p className="text-md text-gray-600 mt-4">
-        <span className="text-red-500">*</span>This information will be used to
-        compile better advice and strategies using ChatGPT.
-      </p>
+      {errors.length > 0 && (
+        <div className="FormField flex-col">
+          {errors.map((err, idx) => (
+            <Error key={idx} err={err} />
+          ))}
+        </div>
+      )}
     </form>
   );
 }
