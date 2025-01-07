@@ -2,7 +2,19 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [process.env.S3_BASE_URL], // Add your domains here. Include others like your production domain if necessary.
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.S3_BASE_URL || 'your-s3-bucket.amazonaws.com', // Replace with your S3 bucket hostname
+        pathname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost', // Include localhost for development
+        port: '3000', // Specify the port if needed
+        pathname: '**',
+      },
+    ],
   },
   async rewrites() {
     const apiBaseUrl = process.env.API_BASE_URL || 'http://localhost:3001'; // Default to localhost in dev
